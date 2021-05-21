@@ -69,19 +69,25 @@ function buildCharts(sample) {
     Object.entries(result).forEach(([key, value]) => {
       
       var otu_ids = result.otu_ids;
-      var otu_labels = result.otu_labels
+      var otu_labels = result.otu_labels;
       var sample_values = result.sample_values;
+      // var sample_values2 = sample_values.sort((a,b) => b - a);
+      // console.log(sample_values2.slice(0,10));
+      
 
     // Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     // so the otu_ids with the most bacteria are last. 
     var yticks = otu_ids.slice(0, 10);
-    var yticks2 = yticks.map(newName => "OTU " + newName);
+    var yticks = yticks.map(newName => "OTU " + newName);
+    var yticks = yticks.reverse();
+    // console.log(yticks);
+
 
     // Create the trace for the bar chart. 
     var barData = [{
-      x: sample_values,
-      y: yticks2,
+      x: sample_values.slice(0,10).reverse(),
+      y: yticks,
       type: 'bar',
       text: otu_labels,
       orientation: 'h'
@@ -96,13 +102,13 @@ function buildCharts(sample) {
 
     // 1. Create the trace for the bubble chart.
     var bubbleData = [{
-      x: yticks,
+      x: otu_ids,
       y: sample_values,
       mode: 'markers',
       marker: {
         color: otu_ids,
         size: sample_values},
-      text: otu_labels,
+      text: otu_labels
     }];
 
     // 2. Create the layout for the bubble chart.

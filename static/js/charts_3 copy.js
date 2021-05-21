@@ -118,19 +118,15 @@ function buildCharts(sample) {
     // Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
-// 3. Create a variable that holds the washing frequency.
-  function buildMetadata(sample) {
-    d3.json("samples.json").then((data) => {
-      var metadata = data.metadata;
-      var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-      var result = resultArray[0];
-      var washing = parseFloat(result.wfreq);
-  //   });
-  // }
+// // // 3. Create a variable that holds the washing frequency.
+// // function buildMetadata(sample) {
+// //   d3.json("samples.json").then((data) => {
+// //     var metadata = data.metadata;
+// //     var washing = parseFloat(metadata.wfreq);
     
     // 4. Create the trace for the gauge chart.
     var gaugeData = [{
-      value: washing,
+      value: 2,
       title: { text: "<b>Belly Button Washing Frequency</b><br>Scrubs per Week"},
       type: "indicator",
       mode: "gauge+number",
@@ -146,19 +142,17 @@ function buildCharts(sample) {
         ],
         threshold: {
           line: { color: "black", width: 4 },
-          thickness: 0.75,  
+          thickness: 0.75,
           // value: 490
           }
       }
     }
   ];
-  
     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { width: 555, height: 450, margin: { t: 0, b: 0 } };
      
     // 6. Use Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
-}
 })
-  )};
+}
