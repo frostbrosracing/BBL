@@ -8,9 +8,11 @@ body {
   .jumbotron {
     background-image: url("../images/belly-button.jpg");
     background-size: 100%;
+    background-position: center top;
     text-align: center;
     color: #fcf9f9;
     }
 
  
 div { background-color: #d5e4f3;}
+
