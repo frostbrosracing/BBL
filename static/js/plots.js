@@ -12,7 +12,7 @@ function init() {
     var selector = d3.select("#selDataset");
   
     d3.json("samples.json").then((data) => {
-      console.log(data);
+      // console.log(data);
       var sampleNames = data.names;
       sampleNames.forEach((sample) => {
         selector
@@ -25,12 +25,12 @@ function init() {
   init();
 
 //   function optionChanged(newSample) {
-//     console.log(newSample);
+    // console.log(newSample);
 //   }
 
   function optionChanged(newSample) {
     buildMetadata(newSample);
-    buildCharts(newSample);
+    // buildCharts(newSample);
   }
 
 
@@ -39,10 +39,15 @@ function init() {
         var metadata = data.metadata;
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
-        var PANEL = d3.select("#sample-metadata");
+        // var result = d3.select("#sample-metadata");
     
-        PANEL.html("");
-        PANEL.append("h6").text(result.wfreq);
+        // result.html("");
+        // PANEL.append("h6").text(result.location);
+        
+        var washing = parseInt(result.wfreq);
+        console.log(washing);
+
+       
       });
     }
 
